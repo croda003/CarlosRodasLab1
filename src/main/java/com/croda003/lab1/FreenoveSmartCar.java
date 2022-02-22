@@ -10,36 +10,12 @@ import java.util.List;
 import edu.fiu.jit.GenericComponent;
 import edu.fiu.jit.SelfCheckCapable;
 
-/**
+/**Smart car main class
  * @author crodas
  *
  */
 public class FreenoveSmartCar implements GenericComponent {
 
-	
-	private RaspberryPi myRaspberryPi;
-	private SdCard mySDCard;
-	private App myApp;
-	private WiFiCard myWifiCard;
-	private FreenoveServer myFreenoveServer;
-	private FirmwareRepository myFirmwareRepository;
-
-
-
-
-	/**Smart car Class
-	 * @param args
-	 * 
-	 */
-	
-	public FreenoveSmartCar() {
-		myRaspberryPi = new RaspberryPi();
-		mySDCard = new SdCard();
-		myWifiCard = new WiFiCard();
-		myFreenoveServer = new FreenoveServer();
-		myApp = new App();
-		myFirmwareRepository = new FirmwareRepository();
-	}
 	
 	private String lights;
 	private boolean wheels;
@@ -49,15 +25,28 @@ public class FreenoveSmartCar implements GenericComponent {
 	private boolean raspberryPi;
 	
 	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	private RaspberryPi myRaspberryPi;
+	private SdCard mySDCard;
+	private WiFiCard myWifiCard;
+	private FreenoveServer myFreenoveServer;
+	private FirmwareRepository myFirmwareRepository;
+	private User myUser;
 
+
+	
+	public FreenoveSmartCar() {
+		myRaspberryPi = new RaspberryPi();
+		mySDCard = new SdCard();
+		myWifiCard = new WiFiCard();
+		myFreenoveServer = new FreenoveServer();
+		myFirmwareRepository = new FirmwareRepository();
+		myUser = new User();
 	}
+	
 
-
-
+	
+	
+	
 
 	@Override
 	public String getComponentName() {
@@ -80,8 +69,14 @@ public class FreenoveSmartCar implements GenericComponent {
 	@Override
 	public List<SelfCheckCapable> getSubComponents() {
 		List internalComponents = new ArrayList(); // create an empty list
-		Collections.addAll(internalComponents, myRaspberryPi, mySDCard, myWifiCard,myFreenoveServer, myApp, myFirmwareRepository); // add all your sub components
+		Collections.addAll(internalComponents, myRaspberryPi, mySDCard, myWifiCard, myFreenoveServer, myFirmwareRepository, myUser); // add all your sub components
 		return internalComponents;
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
